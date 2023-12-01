@@ -16,6 +16,7 @@ const Home = ({ navigation }) => {
       source={require('./../../assets/background.jpeg')}
       style={styles.backgroundImage}
     >
+      <View style={styles.darkOverlay} />
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.headerText}>Academia en Casa</Text>
@@ -92,6 +93,10 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
+  },
+  darkOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   container: {
     flex: 1,

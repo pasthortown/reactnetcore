@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 const Profile = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Nueva Actividad</Text>
+      <Text style={styles.text}>Perfil</Text>
       <Button
         title="Ir a Home"
         onPress={() => navigation.navigate('Home')}
