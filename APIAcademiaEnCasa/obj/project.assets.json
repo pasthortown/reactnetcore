@@ -1031,19 +1031,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyectos\\AcademiaEnCasa\\APIAcademiaEnCasa\\APIAcademiaEnCasa.csproj",
+      "projectUniqueName": "G:\\Proyectos\\AcademiaEnCasa\\APIAcademiaEnCasa\\APIAcademiaEnCasa.csproj",
       "projectName": "APIAcademiaEnCasa",
-      "projectPath": "D:\\Proyectos\\AcademiaEnCasa\\APIAcademiaEnCasa\\APIAcademiaEnCasa.csproj",
+      "projectPath": "G:\\Proyectos\\AcademiaEnCasa\\APIAcademiaEnCasa\\APIAcademiaEnCasa.csproj",
       "packagesPath": "C:\\Users\\luiss\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyectos\\AcademiaEnCasa\\APIAcademiaEnCasa\\obj\\",
+      "outputPath": "G:\\Proyectos\\AcademiaEnCasa\\APIAcademiaEnCasa\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\luiss\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\luiss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

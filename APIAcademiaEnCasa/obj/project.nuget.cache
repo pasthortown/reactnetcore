@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EX+Xrg7H/FqWyWkE37MWT94iQVYi1FAr6CNceK7v6hfFfBEl/Kh3ZtYgHtGGs950d2xAK25/sbp1MDcTD6wZjQ==",
+  "dgSpecHash": "LnSgbatlk3JG6kw/UgpCLfwpEw0XUBwnTTI3ubWDEfq9GzXZ1F61tpFDGjrJST4luaQqAF3tlEcgJxfKSHLlfg==",
   "success": true,
-  "projectFilePath": "D:\\Proyectos\\AcademiaEnCasa\\APIAcademiaEnCasa\\APIAcademiaEnCasa.csproj",
+  "projectFilePath": "G:\\Proyectos\\AcademiaEnCasa\\APIAcademiaEnCasa\\APIAcademiaEnCasa.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luiss\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\luiss\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

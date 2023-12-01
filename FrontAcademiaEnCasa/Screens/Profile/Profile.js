@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const About = () => {
+const Profile = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Nueva Actividad</Text>
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default About;
+export default Profile;
