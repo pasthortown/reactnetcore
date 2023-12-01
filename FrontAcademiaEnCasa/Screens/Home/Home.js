@@ -1,14 +1,53 @@
-import React from 'react';
-import { View, Text, Button, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Modal from 'react-native-modal';
+import QRCode from 'react-native-qrcode-svg';
 
 const Home = ({ navigation }) => {
+
   const user = {
     id: '1264-asdf-5862-ergd-1236',
     name: 'Luis Alfonso',
     email: 'luis@example.com',
     last_course: { name: 'Física', date: { month: 11, day: 30, year: 2023, hour: 12, minute: 30 } },
     next_course: { name: 'Matemáticas', date: { month: 12, day: 15, year: 2023, hour: 18, minute: 30 } }
+  };
+
+  const [isQRDialogVisible, setQRDialogVisible] = useState(false);
+  const [qrContent, setQRContent] = useState('');
+
+  const toggleQRDialog = () => {
+    setQRDialogVisible(!isQRDialogVisible);
+  };
+
+  const handleQRContentChange = (text) => {
+    setQRContent(text);
+  };
+
+  const renderQRDialog = () => (
+    <Modal isVisible={isQRDialogVisible}>
+      <View style={styles.dialogContainer}>
+        <Text style={styles.dialogTitle}>Tu código QR</Text>
+        <View style={styles.qrContainer}>
+          <QRCode
+            value={user.id}
+            size={300}
+          />
+        </View>
+        <TouchableOpacity
+          style={styles.dialogButton}
+          onPress={toggleQRDialog}
+        >
+          <Text style={styles.buttonText}>Cerrar</Text>
+        </TouchableOpacity>
+      </View>
+    </Modal>
+  );
+
+  const formatDate = (date) => {
+    const { month, day, year, hour, minute } = date;
+    return `${month}/${day}/${year} ${hour}:${minute}`;
   };
 
   return (
@@ -47,6 +86,14 @@ const Home = ({ navigation }) => {
         </View>
 
         <TouchableOpacity
+          style={styles.qrbutton}
+          onPress={toggleQRDialog}
+        >
+          <FontAwesome5 name="qrcode" solid style={styles.icon} />
+          <Text style={styles.buttonText}>Mi QR</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
           style={styles.profileButton}
           onPress={() => navigation.navigate('Profile')}
         >
@@ -79,13 +126,10 @@ const Home = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
+
+      {renderQRDialog()}
     </ImageBackground>
   );
-};
-
-const formatDate = (date) => {
-  const { month, day, year, hour, minute } = date;
-  return `${month}/${day}/${year} ${hour}:${minute}`;
 };
 
 const styles = StyleSheet.create({
@@ -142,7 +186,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   sectionLabel: {
-    fontSize: 18,
+    fontSize: 12,
     color: 'white',
     marginBottom: 5,
   },
@@ -176,6 +220,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 10,
   },
+  qrbutton: {
+    position: 'absolute',
+    top: '50%',
+    right: 10,
+    transform: [{ translateY: -25 }],
+    width: 75,
+    height: 75,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: 'brown',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  qrContainer: {
+    alignItems: 'center',  // Centrar el contenido horizontalmente
+    marginBottom: 10,      // Espacio de 10px en la parte inferior
+  },
   button: {
     flex: 1,
     height: 50,
@@ -194,6 +256,30 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 20,
     color: 'white',
+  },
+  dialogContainer: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+  },
+  dialogTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  dialogInput: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+    minHeight: 100,
+  },
+  dialogButton: {
+    backgroundColor: 'brown',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
   },
 });
 
