@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Modal from 'react-native-modal';
 import QRCode from 'react-native-qrcode-svg';
@@ -52,89 +52,98 @@ const Home = ({ navigation }) => {
 
   return (
     <ImageBackground
-      source={require('./../../assets/background.jpeg')}
-      style={styles.backgroundImage}
-    >
-      <View style={styles.darkOverlay} />
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>Academia en Casa</Text>
-        </View>
+        source={require('./../../assets/background.jpeg')}
+        style={styles.backgroundImage}
+      >
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <View style={styles.darkOverlay} />
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Academia en Casa</Text>
+          </View>
 
-        <View style={styles.userContainer}>
-          <Text style={styles.holaText}>Hola</Text>
-          <Text style={styles.userName}>{user.name}</Text>
-          <Text style={styles.userEmail}>{user.email}</Text>
-        </View>
+          <View style={styles.userContainer}>
+            <Text style={styles.holaText}>Hola</Text>
+            <Text style={styles.userName}>{user.name}</Text>
+            <Text style={styles.userEmail}>{user.email}</Text>
+          </View>
 
-        <View style={styles.coursesContainer}>
-          <View style={styles.courseSection}>
-            <Text style={styles.sectionLabel}>Última clase</Text>
-            <View style={styles.courseInfo}>
-              <Text style={styles.courseName}>{user.last_course.name}</Text>
-              <Text style={styles.courseDate}>{formatDate(user.last_course.date)}</Text>
+          <View style={styles.coursesContainer}>
+            <View style={styles.courseSection}>
+              <Text style={styles.sectionLabel}>Última clase</Text>
+              <View style={styles.courseInfo}>
+                <Text style={styles.courseName}>{user.last_course.name}</Text>
+                <Text style={styles.courseDate}>{formatDate(user.last_course.date)}</Text>
+              </View>
+            </View>
+
+            <View style={styles.courseSection}>
+              <Text style={styles.sectionLabel}>Siguiente clase</Text>
+              <View style={styles.courseInfo}>
+                <Text style={styles.courseName}>{user.next_course.name}</Text>
+                <Text style={styles.courseDate}>{formatDate(user.next_course.date)}</Text>
+              </View>
             </View>
           </View>
 
-          <View style={styles.courseSection}>
-            <Text style={styles.sectionLabel}>Siguiente clase</Text>
-            <View style={styles.courseInfo}>
-              <Text style={styles.courseName}>{user.next_course.name}</Text>
-              <Text style={styles.courseDate}>{formatDate(user.next_course.date)}</Text>
-            </View>
+          <TouchableOpacity
+            style={styles.qrbutton}
+            onPress={toggleQRDialog}
+          >
+            <FontAwesome5 name="qrcode" solid style={styles.icon} />
+            <Text style={styles.buttonText}>Mi QR</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.profileButton}
+            onPress={() => navigation.navigate('Profile')}
+          >
+            <FontAwesome5 name="user" solid style={styles.icon} />
+          </TouchableOpacity>
+
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('Courses')}
+            >
+              <FontAwesome5 name="book" solid style={styles.icon} />
+              <Text style={styles.buttonText}>Cursos</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('Calendar')}
+            >
+              <FontAwesome5 name="calendar" solid style={styles.icon} />
+              <Text style={styles.buttonText}>Calendario</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('History')}
+            >
+              <FontAwesome5 name="history" solid style={styles.icon} />
+              <Text style={styles.buttonText}>Historial</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
-        <TouchableOpacity
-          style={styles.qrbutton}
-          onPress={toggleQRDialog}
-        >
-          <FontAwesome5 name="qrcode" solid style={styles.icon} />
-          <Text style={styles.buttonText}>Mi QR</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.profileButton}
-          onPress={() => navigation.navigate('Profile')}
-        >
-          <FontAwesome5 name="user" solid style={styles.icon} />
-        </TouchableOpacity>
-
-        <View style={styles.buttonsContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Courses')}
-          >
-            <FontAwesome5 name="book" solid style={styles.icon} />
-            <Text style={styles.buttonText}>Cursos</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Calendar')}
-          >
-            <FontAwesome5 name="calendar" solid style={styles.icon} />
-            <Text style={styles.buttonText}>Calendario</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('History')}
-          >
-            <FontAwesome5 name="history" solid style={styles.icon} />
-            <Text style={styles.buttonText}>Historial</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      {renderQRDialog()}
+        {renderQRDialog()}
+      </ScrollView>
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollView: {
+    flexGrow: 1,
+  },
   backgroundImage: {
-    flex: 1,
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
     resizeMode: 'cover',
     justifyContent: 'center',
   },
@@ -235,8 +244,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   qrContainer: {
-    alignItems: 'center',  // Centrar el contenido horizontalmente
-    marginBottom: 10,      // Espacio de 10px en la parte inferior
+    alignItems: 'center',
+    marginBottom: 10,
   },
   button: {
     flex: 1,
