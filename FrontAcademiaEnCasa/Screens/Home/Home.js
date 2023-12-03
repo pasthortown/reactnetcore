@@ -3,16 +3,13 @@ import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, ScrollView }
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Modal from 'react-native-modal';
 import QRCode from 'react-native-qrcode-svg';
+import User from '../../Models/User';
 
 const Home = ({ navigation }) => {
+  const last_course = { name: 'Física', date: { month: 11, day: 30, year: 2023, hour: 12, minute: 30 } };
+  const next_course = { name: 'Matemáticas', date: { month: 12, day: 15, year: 2023, hour: 18, minute: 30 } };
 
-  const user = {
-    id: '1264-asdf-5862-ergd-1236',
-    name: 'Luis Alfonso',
-    email: 'luis@example.com',
-    last_course: { name: 'Física', date: { month: 11, day: 30, year: 2023, hour: 12, minute: 30 } },
-    next_course: { name: 'Matemáticas', date: { month: 12, day: 15, year: 2023, hour: 18, minute: 30 } }
-  };
+  const user = new User('1264-asdf-5862-ergd-1236', 'Luis Alfonso', '1234567890', '0912345678', 'luis@example.com', 'Calle 1 y Calle 2 lote 3', last_course, next_course);
 
   const [isQRDialogVisible, setQRDialogVisible] = useState(false);
   const [qrContent, setQRContent] = useState('');
@@ -72,16 +69,16 @@ const Home = ({ navigation }) => {
             <View style={styles.courseSection}>
               <Text style={styles.sectionLabel}>Última clase</Text>
               <View style={styles.courseInfo}>
-                <Text style={styles.courseName}>{user.last_course.name}</Text>
-                <Text style={styles.courseDate}>{formatDate(user.last_course.date)}</Text>
+                <Text style={styles.courseName}>{user.lastCourse.name}</Text>
+                <Text style={styles.courseDate}>{formatDate(user.lastCourse.date)}</Text>
               </View>
             </View>
 
             <View style={styles.courseSection}>
               <Text style={styles.sectionLabel}>Siguiente clase</Text>
               <View style={styles.courseInfo}>
-                <Text style={styles.courseName}>{user.next_course.name}</Text>
-                <Text style={styles.courseDate}>{formatDate(user.next_course.date)}</Text>
+                <Text style={styles.courseName}>{user.nextCourse.name}</Text>
+                <Text style={styles.courseDate}>{formatDate(user.nextCourse.date)}</Text>
               </View>
             </View>
           </View>

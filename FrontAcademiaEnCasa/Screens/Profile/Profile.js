@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, ScrollView, Dimensions } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import User from '../../Models/User';
 
 const Profile = ({ navigation }) => {
-  const [user, setUser] = useState({
-    fullName: 'Luis Alfonso',
-    identification: '1234567890',
-    email: 'luis@example.com',
-    phoneNumber: '0912340056',
-    address: 'Calle 1 y Calle 2 lote 3',
-  });
+  const last_course = { name: 'Física', date: { month: 11, day: 30, year: 2023, hour: 12, minute: 30 } };
+  const next_course = { name: 'Matemáticas', date: { month: 12, day: 15, year: 2023, hour: 18, minute: 30 } };
+
+  const [user, setUser] = useState(
+    new User('1264-asdf-5862-ergd-1236', 'Luis Alfonso', '1234567890', '0912345678', 'luis@example.com', 'Calle 1 y Calle 2 lote 3', last_course, next_course)
+  );
 
   const handleInputChange = (field, value) => {
     setUser(prevUser => ({ ...prevUser, [field]: value }));
