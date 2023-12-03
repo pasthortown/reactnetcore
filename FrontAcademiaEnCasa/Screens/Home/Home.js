@@ -112,7 +112,7 @@ const Home = ({ navigation }) => {
               onPress={() => navigation.navigate('Calendar')}
             >
               <FontAwesome5 name="calendar" solid style={styles.icon} />
-              <Text style={styles.buttonText}>Calendario</Text>
+              <Text style={styles.buttonText}>Agenda</Text>
             </TouchableOpacity>
 
             <TouchableOpacity

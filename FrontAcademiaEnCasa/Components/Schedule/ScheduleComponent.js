@@ -1,59 +1,84 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
+
+const formatDate = (date) => {
+  const { month, day, year, hour, minute } = date;
+  return `${month}/${day}/${year} ${hour}:${minute}`;
+};
 
 const ScheduleComponent = ({ schedule }) => {
+
+  const handleLinkPress = () => {
+    Linking.openURL(schedule.scheduleAddress);
+  };
+ 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Schedule ID:</Text>
-      <Text style={styles.value}>{schedule.id}</Text>
-
-      <Text style={styles.label}>Duration:</Text>
-      <Text style={styles.value}>{schedule.duration}</Text>
-
-      <Text style={styles.label}>Schedule Date and Time:</Text>
-      <Text style={styles.value}>{schedule.scheduleDateTime}</Text>
-
-      <Text style={styles.label}>Course ID:</Text>
-      <Text style={styles.value}>{schedule.courseId}</Text>
-
-      <Text style={styles.label}>Teacher ID:</Text>
-      <Text style={styles.value}>{schedule.teacherId}</Text>
-
-      <Text style={styles.label}>Student ID:</Text>
-      <Text style={styles.value}>{schedule.studentId}</Text>
-
-      <Text style={styles.label}>Course Name:</Text>
-      <Text style={styles.value}>{schedule.courseName}</Text>
-
-      <Text style={styles.label}>Course Description:</Text>
-      <Text style={styles.value}>{schedule.courseDescription}</Text>
-
-      <Text style={styles.label}>Cost Per Hour:</Text>
-      <Text style={styles.value}>${schedule.courseCostPerHour}</Text>
-
-      <Text style={styles.label}>Teacher Name:</Text>
-      <Text style={styles.value}>{schedule.teacherName}</Text>
-
-      <Text style={styles.label}>Student Name:</Text>
-      <Text style={styles.value}>{schedule.studentName}</Text>
+    <View style={styles.scheduleContainer}>
+      <Text style={styles.courseName}>{schedule.courseName}</Text>
+      <Text style={styles.scheduleDateTime}>{`${formatDate(schedule.scheduleDateTime)} - (${schedule.duration} horas)`}</Text>
+      <Text style={styles.courseDescription}>{schedule.courseDescription}</Text>
+      <Text style={styles.personName}>{`Profesor: ${schedule.teacherName}`}</Text>
+      <Text style={styles.personEmail}>{`Email: ${schedule.teacherEmail}`}</Text>
+      <Text style={styles.personName}>{`Estudiante: ${schedule.studentName}`}</Text>
+      <Text style={styles.personEmail}>{`Email: ${schedule.studentEmail}`}</Text>
+      {schedule.scheduleMode === 'virtual' ? (
+        <TouchableOpacity onPress={handleLinkPress}>
+          <Text style={styles.scheduleAddress}>{`Link: ${schedule.scheduleAddress}`}</Text>
+        </TouchableOpacity>
+      ) : (
+        <Text style={styles.scheduleAddress}>{`Dirección: ${schedule.scheduleAddress}`}</Text>
+      )}
+      <Text style={styles.costPerHour}>{`Costo: $${schedule.courseCostPerHour * schedule.duration}`}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  value: {
-    fontSize: 16,
+  scheduleContainer: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    width: '100%',
+    padding: 20,
+    borderRadius: 8,
     marginBottom: 10,
+  },
+  scheduleDateTime: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  courseName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    textAlign: 'center',
+  },
+  scheduleAddress: {
+    fontSize: 12,
+    color: '#ffffff',
+    marginBottom: 10,
+  },
+  courseDescription: {
+    fontSize: 12,
+    color: '#ffffff',
+    marginBottom: 10,
+  },
+  personName: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#ffffff',
+  },
+  personEmail: {
+    fontSize: 12,
+    color: '#ffffff',
+    marginBottom: 10,
+  },
+  costPerHour: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    textAlign: 'right',
   },
 });
 

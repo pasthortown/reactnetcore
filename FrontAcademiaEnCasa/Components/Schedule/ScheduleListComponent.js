@@ -4,20 +4,20 @@ import ScheduleComponent from './ScheduleComponent';
 
 const ScheduleListComponent = ({ schedules }) => {
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={schedules}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <ScheduleComponent schedule={item} />}
-      />
-    </View>
+    <FlatList style={styles.containerList}
+      data={schedules}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => <ScheduleComponent schedule={item} />}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  containerList: {
+    width: '100%',
+    padding: 10
   },
 });
+
 
 export default ScheduleListComponent;

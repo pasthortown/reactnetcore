@@ -1,6 +1,8 @@
 class Schedule {
-    constructor( id, duration, scheduleDateTime, courseId, teacherId, studentId, courseName, courseDescription, courseCostPerHour, teacherName, studentName) {
+    constructor( id, scheduleMode, scheduleAddress, duration, scheduleDateTime, courseId, teacherId, studentId, courseName, courseDescription, courseCostPerHour, teacherName, teacherEmail, studentName, studentEmail) {
       this.id = id;
+      this.scheduleMode = scheduleMode;
+      this.scheduleAddress = scheduleAddress;
       this.duration = duration;
       this.scheduleDateTime = scheduleDateTime;
       this.courseId = courseId;
@@ -10,7 +12,9 @@ class Schedule {
       this.courseDescription = courseDescription;
       this.courseCostPerHour = courseCostPerHour;
       this.teacherName = teacherName;
+      this.teacherEmail = teacherEmail;
       this.studentName = studentName;
+      this.studentEmail = studentEmail;
     }
 }
 

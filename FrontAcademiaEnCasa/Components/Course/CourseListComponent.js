@@ -4,19 +4,18 @@ import CourseComponent from './CourseComponent';
 
 const CourseListComponent = ({ courses }) => {
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={courses}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <CourseComponent course={item} />}
-      />
-    </View>
+    <FlatList style={styles.containerList}
+      data={courses}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => <CourseComponent course={item} />}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  containerList: {
+    width: '100%',
+    padding: 10
   },
 });
 
