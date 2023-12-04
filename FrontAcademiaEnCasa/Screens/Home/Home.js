@@ -29,7 +29,7 @@ const Home = ({ navigation }) => {
         <View style={styles.qrContainer}>
           <QRCode
             value={user.id}
-            size={300}
+            size={200}
           />
         </View>
         <TouchableOpacity

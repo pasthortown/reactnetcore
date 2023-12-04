@@ -98,3 +98,4 @@ G:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\obj\Debug\net8.0\refint\APIAcademi
 G:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\obj\Debug\net8.0\APIAcademiaEnCasa.pdb
 G:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\obj\Debug\net8.0\APIAcademiaEnCasa.genruntimeconfig.cache
 G:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\obj\Debug\net8.0\ref\APIAcademiaEnCasa.dll
+D:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\obj\Debug\net8.0\APIAcademiaEnCasa.sourcelink.json
