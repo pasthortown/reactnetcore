@@ -2,14 +2,14 @@ namespace APIAcademiaEnCasa.Domain.Entities
 {
     public class User
     {
-        public int Id { get; private set; }
-        public string FullName { get; private set; }
-        public string Identification { get; private set; }
-        public string PhoneNumber { get; private set; }
-        public string Email { get; private set; }
-        public string Address { get; private set; }
-        public int LastCourse { get; private set; }
-        public int NextCourse { get; private set; }
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        public string Identification { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public int LastCourse { get; set; }
+        public int NextCourse { get; set; }
 
         public User(
             int id,

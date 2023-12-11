@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APIAcademiaEnCasa</name>
+    </assembly>
+    <members>
+        <member name="T:APIAcademiaEnCasa.Application.Controllers.CourseController">
+            <summary>
+            Controlador para gestionar cursos.
+            </summary>
+            
+        </member>
+        <member name="M:APIAcademiaEnCasa.Application.Controllers.CourseController.#ctor(APIAcademiaEnCasa.Application.Services.CourseService)">
+            <summary>
+            Constructor del controlador de cursos.
+            </summary>
+            <param name="courseService">Servicio de cursos.</param>
+        </member>
+        <member name="M:APIAcademiaEnCasa.Application.Controllers.CourseController.CrearCurso(APIAcademiaEnCasa.Domain.Entities.Course)">
+            <summary>
+            Crea un nuevo curso.
+            </summary>
+            <param name="curso">Datos del curso.</param>
+            <returns>Resultado de la operación.</returns>
+        </member>
+        <member name="M:APIAcademiaEnCasa.Application.Controllers.CourseController.ObtenerCursos">
+            <summary>
+            Obtiene todos los cursos.
+            </summary>
+            <returns>Lista de cursos.</returns>
+        </member>
+        <member name="M:APIAcademiaEnCasa.Application.Controllers.CourseController.EliminarCurso(System.Int32)">
+            <summary>
+            Borra un curso a partir del id
+            </summary>
+            <returns>Borrar curso.</returns>
+        </member>
+        <member name="M:APIAcademiaEnCasa.Application.Controllers.CourseController.ActualizarCurso(System.Int32,APIAcademiaEnCasa.Domain.Entities.Course)">
+            <summary>
+            Actualiza un curso a partir del id
+            </summary>
+            <returns>Actualizar un curso.</returns>
+        </member>
+    </members>
+</doc>

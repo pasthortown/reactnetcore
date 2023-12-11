@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using APIAcademiaEnCasa.Application.Services;
 using APIAcademiaEnCasa.Infrastructure;
-using APIAcademiaEnCasa.Domain.Entities;
+using System;
+using System.IO;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,10 +23,18 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c => {
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Tu API",
+        Version = "v1",
+        Description = "Descripción de tu API"
+    });
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
+});
 builder.Services.AddSingleton<MongoDBContext>();
 builder.Services.AddScoped<CourseService>();
 builder.Services.AddControllers();

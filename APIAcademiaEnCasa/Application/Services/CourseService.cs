@@ -19,6 +19,42 @@ namespace APIAcademiaEnCasa.Application.Services
             _courses.InsertOne(curso);
         }
 
+        public List<Course> ObtenerCursos()
+        {
+            return _courses.Find(c => true).ToList();
+        }
+
+        public void EliminarCurso(int courseID)
+        {
+            var filter = Builders<Course>.Filter.Eq("_id", courseID);
+            var cursoExistente = _courses.Find(filter).FirstOrDefault();
+            if (cursoExistente == null)
+            {
+                throw new InvalidOperationException($"No se encontró un curso con ID {courseID}.");
+            }
+            _courses.DeleteOne(filter);
+        }
+
+        public void ActualizarCurso(int courseId, Course updatedCourse)
+        {
+            var filter = Builders<Course>.Filter.Eq("_id", courseId);
+            var cursoExistente = _courses.Find(filter).FirstOrDefault();
+
+            if (cursoExistente == null)
+            {
+                throw new InvalidOperationException($"No se encontró un curso con ID {courseId}.");
+            }
+
+            cursoExistente.Name = updatedCourse.Name;
+            cursoExistente.Description = updatedCourse.Description;
+            cursoExistente.CostPerHour = updatedCourse.CostPerHour;
+            cursoExistente.TeacherId = updatedCourse.TeacherId;
+            cursoExistente.TeacherEmail = updatedCourse.TeacherEmail;
+            cursoExistente.TeacherName = updatedCourse.TeacherName;
+
+            _courses.ReplaceOne(filter, cursoExistente);
+        }
+
         private void ValidarCurso(Course curso)
         {
             if (curso == null)

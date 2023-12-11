@@ -2,22 +2,22 @@ namespace APIAcademiaEnCasa.Domain.Entities
 {
     public class Schedule
     {
-        public int Id { get; private set; }
-        public string ScheduleMode { get; private set; }
-        public string ScheduleAddress { get; private set; }
-        public int Duration { get; private set; }
-        public DateTime ScheduleDateTime { get; private set; }
-        public int CourseId { get; private set; }
-        public int TeacherId { get; private set; }
-        public int StudentId { get; private set; }
-        public string CourseName { get; private set; }
-        public string CourseDescription { get; private set; }
-        public decimal CourseCostPerHour { get; private set; }
-        public string TeacherName { get; private set; }
-        public string TeacherEmail { get; private set; }
-        public string StudentName { get; private set; }
-        public string StudentEmail { get; private set; }
-        public bool Disabled { get; private set; }
+        public int Id { get; set; }
+        public string ScheduleMode { get; set; }
+        public string ScheduleAddress { get; set; }
+        public int Duration { get; set; }
+        public DateTime ScheduleDateTime { get; set; }
+        public int CourseId { get; set; }
+        public int TeacherId { get; set; }
+        public int StudentId { get; set; }
+        public string CourseName { get; set; }
+        public string CourseDescription { get; set; }
+        public decimal CourseCostPerHour { get; set; }
+        public string TeacherName { get; set; }
+        public string TeacherEmail { get; set; }
+        public string StudentName { get; set; }
+        public string StudentEmail { get; set; }
+        public bool Disabled { get; set; }
 
         public Schedule(
             int id,

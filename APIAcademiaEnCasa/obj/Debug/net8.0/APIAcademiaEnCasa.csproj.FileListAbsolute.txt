@@ -48,3 +48,5 @@ D:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\bin\Debug\net8.0\AWSSDK.Core.dll
 D:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\bin\Debug\net8.0\AWSSDK.SecurityToken.dll
 D:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\bin\Debug\net8.0\Snappier.dll
 D:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\bin\Debug\net8.0\ZstdSharp.dll
+D:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\bin\Debug\net8.0\APIAcademiaEnCasa.xml
+D:\Proyectos\AcademiaEnCasa\APIAcademiaEnCasa\obj\Debug\net8.0\APIAcademiaEnCasa.xml

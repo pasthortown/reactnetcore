@@ -2,13 +2,13 @@ namespace APIAcademiaEnCasa.Domain.Entities
 {
     public class Course
     {
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public decimal CostPerHour { get; private set; }
-        public int TeacherId { get; private set; }
-        public string TeacherEmail { get; private set; }
-        public string TeacherName { get; private set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal CostPerHour { get; set; }
+        public int TeacherId { get; set; }
+        public string TeacherEmail { get; set; }
+        public string TeacherName { get; set; }
 
         public Course(int id, string name, string description, decimal costPerHour, int teacherId, string teacherEmail, string teacherName)
         {
