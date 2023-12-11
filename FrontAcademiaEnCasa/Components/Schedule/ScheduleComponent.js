@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
+import Modal from 'react-native-modal';
 
 const formatDate = (date) => {
   const { month, day, year, hour, minute } = date;
@@ -8,12 +9,27 @@ const formatDate = (date) => {
 
 const ScheduleComponent = ({ schedule }) => {
 
+  const [isDialogVisible, setDialogVisible] = useState(false);
+
+  const toggleDialog = () => {
+    if (!schedule.disabled) {
+      setDialogVisible(!isDialogVisible);
+    }
+  };
+
+  const handleMainViewPress = () => {
+    toggleDialog();
+  };
+
   const handleLinkPress = () => {
     Linking.openURL(schedule.scheduleAddress);
   };
  
   return (
-    <View style={styles.scheduleContainer}>
+    <TouchableOpacity
+      style={styles.scheduleContainer}
+      onPress={() => toggleDialog()}
+    >
       <Text style={styles.courseName}>{schedule.courseName}</Text>
       <Text style={styles.scheduleDateTime}>{`${formatDate(schedule.scheduleDateTime)} - (${schedule.duration} horas)`}</Text>
       <Text style={styles.courseDescription}>{schedule.courseDescription}</Text>
@@ -29,7 +45,19 @@ const ScheduleComponent = ({ schedule }) => {
         <Text style={styles.scheduleAddress}>{`Dirección: ${schedule.scheduleAddress}`}</Text>
       )}
       <Text style={styles.costPerHour}>{`Costo: $${schedule.courseCostPerHour * schedule.duration}`}</Text>
-    </View>
+      <Modal isVisible={isDialogVisible}>
+        <View style={styles.dialogContainer}>
+          <Text style={styles.dialogTitle}>Título del Diálogo</Text>
+          {/* Contenido del diálogo */}
+          <TouchableOpacity
+            style={styles.dialogButton}
+            onPress={toggleDialog}
+          >
+            <Text style={styles.buttonText}>Cerrar</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+    </TouchableOpacity>
   );
 };
 
@@ -79,6 +107,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#ffffff',
     textAlign: 'right',
+  },
+  dialogContainer: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+  },
+  dialogTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  dialogButton: {
+    marginTop: 10,
+    padding: 10,
+    backgroundColor: 'blue', // Puedes cambiar el color según tus preferencias
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
   },
 });
 

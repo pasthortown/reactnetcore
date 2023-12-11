@@ -1,5 +1,5 @@
 class Schedule {
-    constructor( id, scheduleMode, scheduleAddress, duration, scheduleDateTime, courseId, teacherId, studentId, courseName, courseDescription, courseCostPerHour, teacherName, teacherEmail, studentName, studentEmail) {
+    constructor( id, scheduleMode, scheduleAddress, duration, scheduleDateTime, courseId, teacherId, studentId, courseName, courseDescription, courseCostPerHour, teacherName, teacherEmail, studentName, studentEmail, disabled) {
       this.id = id;
       this.scheduleMode = scheduleMode;
       this.scheduleAddress = scheduleAddress;
@@ -15,6 +15,7 @@ class Schedule {
       this.teacherEmail = teacherEmail;
       this.studentName = studentName;
       this.studentEmail = studentEmail;
+      this.disabled = disabled;
     }
 }
 

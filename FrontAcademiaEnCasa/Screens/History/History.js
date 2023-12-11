@@ -23,7 +23,8 @@ const History = () => {
     'John Doe',
     'john@example.com',
     'Alice Johnson',
-    'alice@example.com'
+    'alice@example.com',
+    true
   );
   
   const schedule2 = new Schedule(
@@ -41,7 +42,8 @@ const History = () => {
     'Jane Smith',
     'jane@example.com',
     'Bob Anderson',
-    'bob@example.com'
+    'bob@example.com',
+    true
   );
 
   const schedules = [ schedule1, schedule2 ];

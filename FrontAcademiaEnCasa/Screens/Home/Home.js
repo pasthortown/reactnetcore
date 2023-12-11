@@ -61,7 +61,7 @@ const Home = ({ navigation }) => {
 
           <View style={styles.userContainer}>
             <Text style={styles.holaText}>Hola</Text>
-            <Text style={styles.userName}>{user.name}</Text>
+            <Text style={styles.userName}>{user.fullName}</Text>
             <Text style={styles.userEmail}>{user.email}</Text>
           </View>
 

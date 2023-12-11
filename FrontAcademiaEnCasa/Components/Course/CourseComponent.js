@@ -1,15 +1,42 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Modal from 'react-native-modal';
 
 const CourseComponent = ({ course }) => {
+
+  const [isDialogVisible, setDialogVisible] = useState(false);
+
+  const toggleDialog = () => {
+    setDialogVisible(!isDialogVisible);
+  };
+
+  const handleMainViewPress = () => {
+    toggleDialog();
+  };
+
   return (
-    <View style={styles.courseContainer}>
+    <TouchableOpacity
+      style={styles.courseContainer}
+      onPress={() => toggleDialog()}
+    >
       <Text style={styles.courseName}>{course.name}</Text>
       <Text style={styles.courseDescription}>{course.description}</Text>
       <Text style={styles.teacherName}>{`Profesor: ${course.teacherName}`}</Text>
       <Text style={styles.teacherEmail}>{`Email: ${course.teacherEmail}`}</Text>
       <Text style={styles.costPerHour}>{`Costo: $${course.costPerHour} cada hora`}</Text>
-    </View>
+      <Modal isVisible={isDialogVisible}>
+        <View style={styles.dialogContainer}>
+          <Text style={styles.dialogTitle}>Título del Diálogo</Text>
+          {/* Contenido del diálogo */}
+          <TouchableOpacity
+            style={styles.dialogButton}
+            onPress={toggleDialog}
+          >
+            <Text style={styles.buttonText}>Cerrar</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+    </TouchableOpacity>
   );
 };
 
@@ -48,6 +75,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#ffffff',
     textAlign: 'right',
+  },
+  dialogContainer: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 10,
+  },
+  dialogTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  dialogButton: {
+    marginTop: 10,
+    padding: 10,
+    backgroundColor: 'blue', // Puedes cambiar el color según tus preferencias
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
   },
 });
 
